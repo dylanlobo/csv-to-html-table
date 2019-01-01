@@ -21,13 +21,36 @@
   </head>
 
   <body>
+   <script type="text/javascript">
+         function load_file(){
+         var fqname = document.getElementById('file-input').value;
+         var fname  = fqname.replace(/C:\\fakepath/,'data');
+	 var h_index = document.getElementById('h_index').value;
+		 
+
+      CsvToHtmlTable.init({
+        csv_path:  fname,
+        element: 'table-container', 
+        allow_download: true,
+        csv_options: {separator: ',',delimiter:','},
+        datatables_options: {"paging": false},
+        custom_formatting: [[h_index, format_link]]
+      });
+      }
+   </script>
     <div class="container-fluid">
 
       <h2>CSV to HTML Table</h2>
 
       <p>Display any CSV file as a searchable, filterable, pretty HTML table. Done in 100% JavaScript. <a href='https://github.com/derekeder/csv-to-html-table'>Code on GitHub</a>.</p>
 
-      <p>Here's a table of Health Clinics from the <a href='https://data.cityofchicago.org/browse?q=health%20clinic&sortBy=relevance&utf8=%E2%9C%93'>City of Chicago Data Portal</a>.</p>
+      <!-- <button onclick="document.getElementById('file-input').click();">Select CSV</button> -->
+      <p><b>Select a CSV file</b></p>
+      <input id="file-input" type="file" name="name" />
+      <p> </p>
+      <p><input type="number" id="h_index" name="name" min="0" value="8">Hypertext field index (starts with 0)</input></p>
+      <p> </p>
+      <p><button onclick="load_file();">Load CSV File</button></p>
       
       <div id='table-container'></div>
 
@@ -58,15 +81,9 @@
         else
           return "";
       }
+      
 
-      CsvToHtmlTable.init({
-        csv_path: 'data/Health Clinics in Chicago.csv',
-        element: 'table-container', 
-        allow_download: true,
-        csv_options: {separator: ',', delimiter: '"'},
-        datatables_options: {"paging": false},
-        custom_formatting: [[4, format_link]]
-      });
+
     </script>
   </body>
 </html>
