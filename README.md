@@ -14,6 +14,10 @@ cd csv-to-html-table
 ```
 
 #### 2. Add your CSV file to the `data/` folder
+Alternatively, when using Chrome, you can run locally by starting up Chrome with the following options:
+chrome --disable-web-security --user-data-dir=<dir with csv files> <path to index.html>
+For example on Windows:
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="D:\myCsvFolder" "D:\git_repos\csv-to-html-table-master\index.html"
 
 #### 3. In `index.html` set your options in the `CsvToHtmlTable.init()` function
 
